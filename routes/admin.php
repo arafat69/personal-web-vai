@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\TeachingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +26,24 @@ Route::controller(AuthController::class)->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+    // Home
     Route::controller(HomeController::class)->group(function () {
         Route::get('/home', 'index')->name('home.index');
         Route::get('/home/edit', 'edit')->name('home.edit');
         Route::post('/home/update/{home?}', 'update')->name('home.update');
+    });
+
+    // About
+    Route::controller(AboutController::class)->group(function () {
+        Route::get('/about', 'index')->name('about.index');
+        Route::get('/about/edit', 'edit')->name('about.edit');
+        Route::post('/about/update/{about?}', 'update')->name('about.update');
+    });
+
+    // Teaching
+    Route::controller(TeachingController::class)->group(function () {
+        Route::get('/teaching', 'index')->name('teaching.index');
+        Route::get('/teaching/edit', 'edit')->name('teaching.edit');
+        Route::post('/teaching/update/{teaching?}', 'update')->name('teaching.update');
     });
 });

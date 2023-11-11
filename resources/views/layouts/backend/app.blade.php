@@ -36,15 +36,9 @@
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/wexlxliqhmjrp5yn377151vsul83009dmhjh86spkreq9q27/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-          selector: 'textarea',
-          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-      </script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
     @stack('script')
 </body>
 

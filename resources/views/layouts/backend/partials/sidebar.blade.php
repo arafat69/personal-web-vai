@@ -31,20 +31,22 @@
                         <span class="hide-menu">Home</span>
                     </a>
                 </li>
+
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('about.*') ? 'active' : '' }}" href="{{ route('about.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-alert-circle"></i>
+                            <i class="ti ti-article"></i>
                         </span>
-                        <span class="hide-menu">Alerts</span>
+                        <span class="hide-menu">About</span>
                     </a>
                 </li>
+
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                    <a class="sidebar-link {{ request()->routeIs('teaching.*') ? 'active' : '' }}" href="{{ route('teaching.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-cards"></i>
+                            <i class="ti ti-article"></i>
                         </span>
-                        <span class="hide-menu">Card</span>
+                        <span class="hide-menu">Teaching Philosophy</span>
                     </a>
                 </li>
 
