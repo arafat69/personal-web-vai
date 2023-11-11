@@ -1,0 +1,17 @@
+body {
+    background: #f1f5f9;
+}
+
+.card {
+    border-radius: 12px;
+}
+.card .card-header {
+    background-color: #fff;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+.card .card-footer{
+    background-color: #fff;
+    border-top: 1px solid #f1f5f9;
+    border-radius: 0 0 12px 12px;
+}
