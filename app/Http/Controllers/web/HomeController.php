@@ -3,32 +3,41 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\About;
+use App\Models\Course;
+use App\Models\Curriculum;
+use App\Models\Home;
+use App\Models\Teaching;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $home = Home::first();
+        return view('home', compact('home'));
     }
 
     public function about()
     {
-        return view('about');
+        $about = About::first();
+        return view('about', compact('about'));
     }
 
     public function teaching()
     {
-        return view('teaching');
+        $teaching = Teaching::first();
+        return view('teaching', compact('teaching'));
     }
 
     public function curriculum()
     {
-        return view('cv');
+        $curriculum = Curriculum::first();
+        return view('cv', compact('curriculum'));
     }
 
     public function course()
     {
-        return view('course');
+        $course = Course::first();
+        return view('course', compact('course'));
     }
 }
