@@ -22,7 +22,7 @@
                                     <a href="{{ route('location.edit', $location->id) }}" class="btn btn-info btn-sm">
                                         <i class="ti ti-edit font-20"></i>
                                     </a>
-                                    <a href="{{ route('location.destroy', $location->id) }}" class="btn btn-danger btn-sm">
+                                    <a href="{{ route('location.destroy', $location->id) }}" class="btn btn-danger btn-sm delete-confirm">
                                         <i class="ti ti-trash font-20"></i>
                                     </a>
                                 </td>

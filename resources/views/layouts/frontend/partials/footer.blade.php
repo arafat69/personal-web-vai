@@ -1,17 +1,24 @@
+@php
+    use App\Models\Social;
+    use App\Models\Setting;
+
+    $setting = Setting::first();
+    $socialLinks = Social::All();
+@endphp
 <footer class="mt-3">
-    <p class="m-0">copyright &copy; 2023 <a href="#"><strong>Rejaul Haque</strong></a> </p>
+    <p class="m-0">
+        copyright &copy; {{ date('Y') }}
+        <a href="{{ route('root') }}">
+            <strong>{{ $setting?->name ?? 'Rejaul Haque' }}</strong>
+        </a>
+    </p>
+
     <div class="footer-social">
-        <div class="icon">
-            <a href="#"><img src="assets/images/facebook.webp" alt="facebook" title="Facebook"></a>
-        </div>
-        <div class="icon">
-            <a href="#"><img src="assets/images/Instagram.webp" alt="Instagram" title="Instagram"></a>
-        </div>
-        <div class="icon">
-            <a href="#"><img src="assets/images/linkedin.png" alt="linkedin" title="linkedin"></a>
-        </div>
-        <div class="icon">
-            <a href="#"><img src="assets/images/whatsapp.png" alt="whatsapp" title="whatsapp"></a>
-        </div>
+        @foreach ($socialLinks as $social)
+            <div class="icon">
+                <a href="{{ $social->url }}"><img src="{{ $social->thumbnail }}" alt="{{ $social->name }}"
+                        title="{{ $social->name }}"></a>
+            </div>
+        @endforeach
     </div>
 </footer>

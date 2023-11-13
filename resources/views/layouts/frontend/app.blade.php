@@ -1,15 +1,22 @@
+@php
+    use App\Models\Setting;
+    
+    $setting = Setting::first();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $setting?->title ?? 'Rejaul Haque' }}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ $setting?->faviconPath ?? asset('assets/images/rejaul.jpeg') }}" />
+    <link rel="apple-touch-icon" href="{{ $setting?->faviconPath ?? asset('assets/images/rejaul.jpeg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <title>Document</title>
 </head>
 
 <body>

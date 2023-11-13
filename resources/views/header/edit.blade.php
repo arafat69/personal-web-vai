@@ -1,0 +1,39 @@
+@extends('layouts.backend.app')
+@section('content')
+    <form action="{{ route('header.update', $header?->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center gap-2">
+                <h5 class="m-0">Edit Header</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="fw-bold">Header Title</label>
+                    <input type="text" name="title" value="{{ $header?->title }}" class="form-control"
+                        placeholder="Enter Title">
+                    @error('title')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold">Header Image</label>
+                    <input type="file" name="photo" class="form-control"/>
+                    @error('photo')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="">
+                    <label class="fw-bold">Header Description</label>
+                    <input type="text" name="description" value="{{ $header?->description }}" placeholder="Enter short description" class="form-control"/>
+                    @error('description')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary">Save And Update</button>
+            </div>
+        </div>
+    </form>
+@endsection
