@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Models\Course;
-use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -22,10 +22,8 @@ class CourseController extends Controller
         return view('course.edit', compact('course'));
     }
 
-    public function update(Request $request, Course $course)
+    public function update(CommonRequest $request, Course $course)
     {
-        $request->validate(['title' => 'required', 'description' => 'required|string']);
-
         Course::updateOrCreate(
             ['id' => $course->id ?? 0],
             [

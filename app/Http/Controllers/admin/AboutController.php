@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Models\About;
-use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
@@ -22,10 +22,8 @@ class AboutController extends Controller
         return view('about.edit', compact('about'));
     }
 
-    public function update(Request $request, About $about)
+    public function update(CommonRequest $request, About $about)
     {
-        $request->validate(['title' => 'required', 'description' => 'required|string']);
-
         About::updateOrCreate(
             ['id' => $about->id ?? 0],
             [

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Models\Home;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -22,10 +22,8 @@ class HomeController extends Controller
         return view('home.edit', compact('home'));
     }
 
-    public function update(Request $request, Home $home)
+    public function update(CommonRequest $request, Home $home)
     {
-        $request->validate(['title' => 'required', 'description' => 'required|string']);
-
         Home::updateOrCreate(
             ['id' => $home->id ?? 0],
             [

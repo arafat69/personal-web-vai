@@ -27,7 +27,6 @@ class SettingController extends Controller
 
     public function update(Request $request, Setting $setting)
     {
-
         $logo = $this->logoUpdateOrCreate($setting, $request);
         $favicon = $this->faviconUpdateOrCreate($setting, $request);
         Setting::updateOrCreate(

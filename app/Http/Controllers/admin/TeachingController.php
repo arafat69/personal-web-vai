@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Models\Teaching;
-use Illuminate\Http\Request;
 
 class TeachingController extends Controller
 {
@@ -22,10 +22,8 @@ class TeachingController extends Controller
         return view('teaching.edit', compact('teaching'));
     }
 
-    public function update(Request $request, Teaching $teaching)
+    public function update(CommonRequest $request, Teaching $teaching)
     {
-        $request->validate(['title' => 'required', 'description' => 'required|string']);
-
         Teaching::updateOrCreate(
             ['id' => $teaching->id ?? 0],
             [

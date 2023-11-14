@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Models\Education;
-use Illuminate\Http\Request;
 
 class EducationController extends Controller
 {
@@ -22,10 +22,8 @@ class EducationController extends Controller
         return view('education.edit', compact('education'));
     }
 
-    public function update(Request $request, Education $education)
+    public function update(CommonRequest $request, Education $education)
     {
-        $request->validate(['title' => 'required', 'description' => 'required|string']);
-
         Education::updateOrCreate(
             ['id' => $education->id ?? 0],
             [

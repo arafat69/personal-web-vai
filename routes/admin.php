@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\HeaderController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\LocationController;
 use App\Http\Controllers\admin\OfficeHourController;
+use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\SectionController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\SocialLinkController;
@@ -133,5 +134,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/setting', 'index')->name('setting.index');
         Route::get('/setting/edit', 'edit')->name('setting.edit');
         Route::post('/setting/update/{setting?}', 'update')->name('setting.update');
+    });
+
+    // Profile
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'index')->name('profile.index');
+        Route::post('/profile/update', 'update')->name('profile.update');
+        Route::get('/change-password', 'show')->name('change.password');
+        Route::post('/change-password', 'changePassword')->name('change.password');
     });
 });

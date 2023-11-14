@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SocialLinkRequest;
 use App\Models\Social;
 use App\Repositories\MediaRepository;
-use Illuminate\Http\Request;
 
 class SocialLinkController extends Controller
 {
@@ -28,14 +28,8 @@ class SocialLinkController extends Controller
         return view('social.edit', compact('social'));
     }
 
-    public function store(Request $request)
+    public function store(SocialLinkRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'url' => 'nullable|string',
-            'icon' => 'required|file|mimes:png,jpg,jpeg,svg,webp,gif',
-        ]);
-
         $thumbnail = $this->createMedia($request);
 
         Social::create([
@@ -47,14 +41,8 @@ class SocialLinkController extends Controller
         return to_route('social.index')->withSuccess('Created Successfully');
     }
 
-    public function update(Request $request, Social $social)
+    public function update(SocialLinkRequest $request, Social $social)
     {
-        $request->validate([
-            'name' => 'required',
-            'url' => 'nullable|string',
-            'icon' => 'nullable|file|mimes:png,jpg,jpeg,svg,webp,gif',
-        ]);
-
         $thumbnail = $this->updateMedia($social, $request);
 
         $social->update([

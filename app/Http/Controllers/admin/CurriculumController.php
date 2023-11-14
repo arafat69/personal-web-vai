@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Models\Curriculum;
-use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
@@ -22,10 +22,8 @@ class CurriculumController extends Controller
         return view('curriculum.edit', compact('curriculum'));
     }
 
-    public function update(Request $request, Curriculum $curriculum)
+    public function update(CommonRequest $request, Curriculum $curriculum)
     {
-        $request->validate(['title' => 'required', 'description' => 'required|string']);
-
         Curriculum::updateOrCreate(
             ['id' => $curriculum->id ?? 0],
             [

@@ -15,6 +15,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guarded = ['id'];
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -35,7 +37,7 @@ class User extends Authenticatable
     public function thumbnail(): Attribute
     {
         $media = $this->media;
-        $image = asset('images/dummy-profile.png');
+        $image = asset('assets/images/rejaul.jpeg');
 
         if ($media && Storage::exists($media->src)) {
             $image = Storage::url($media->src);

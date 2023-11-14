@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HeaderRequest;
 use App\Models\Header;
 use App\Repositories\MediaRepository;
-use Illuminate\Http\Request;
 
 class HeaderController extends Controller
 {
@@ -25,14 +25,8 @@ class HeaderController extends Controller
         return view('header.edit', compact('header'));
     }
 
-    public function update(Request $request, Header $header)
+    public function update(HeaderRequest $request, Header $header)
     {
-        $request->validate([
-            'photo' => 'required|file|mimes:png,jpg,webp,svg,jpeg,gif',
-            'title' => 'required',
-            'description' => 'required|string',
-        ]);
-
         $thumbnail = $this->createOrUpdateMedia($header, $request);
 
         Header::updateOrCreate(
