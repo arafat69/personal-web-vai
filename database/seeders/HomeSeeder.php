@@ -22,31 +22,31 @@ class HomeSeeder extends Seeder
         // Home
         Home::create([
             'title' => 'Rejaul Haque Kawshik',
-            'description' => $faker->paragraph(3)
+            'description' => $faker->paragraph(3),
         ]);
 
         // About
         About::create([
             'title' => 'About',
-            'description' => $faker->paragraph(4)
+            'description' => $faker->paragraph(4),
         ]);
 
         // Course
         Course::create([
             'title' => 'Course Information',
-            'description' => $faker->paragraph(3)
+            'description' => $faker->paragraph(3),
         ]);
 
         // Curriculum
         Curriculum::create([
             'title' => 'Curriculum Vitae & Research',
-            'description' => $faker->paragraph(5)
+            'description' => $faker->paragraph(5),
         ]);
 
         // Teaching
         Teaching::create([
             'title' => 'Teaching Philosophy',
-            'description' => $faker->paragraph(6)
+            'description' => $faker->paragraph(6),
         ]);
     }
 }

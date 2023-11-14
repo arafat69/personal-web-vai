@@ -10,15 +10,18 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
     private $path = 'setting/';
+
     public function index()
     {
         $setting = Setting::first();
+
         return view('setting.index', compact('setting'));
     }
 
     public function edit()
     {
         $setting = Setting::first();
+
         return view('setting.edit', compact('setting'));
     }
 
@@ -60,6 +63,7 @@ class SettingController extends Controller
                 $media
             );
         }
+
         return $media;
     }
 
@@ -83,6 +87,7 @@ class SettingController extends Controller
                 $media
             );
         }
+
         return $media;
     }
 }

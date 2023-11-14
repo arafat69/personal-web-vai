@@ -13,7 +13,7 @@ abstract class Repository
      *
      * @return Model|Builder
      */
-    abstract static public function model();
+    abstract public static function model();
 
     public static function query(): Builder
     {

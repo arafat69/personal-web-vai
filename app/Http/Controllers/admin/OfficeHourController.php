@@ -11,6 +11,7 @@ class OfficeHourController extends Controller
     public function index()
     {
         $officeHours = OfficeHour::all();
+
         return view('office-hour.index', compact('officeHours'));
     }
 
@@ -28,6 +29,7 @@ class OfficeHourController extends Controller
     {
         $data = $request->validate(['description' => 'required']);
         OfficeHour::create($data);
+
         return to_route('officeHour.index')->withSuccess('Updated Successfully');
     }
 
@@ -35,12 +37,14 @@ class OfficeHourController extends Controller
     {
         $data = $request->validate(['description' => 'required']);
         $officeHour->update($data);
+
         return to_route('officeHour.index')->withSuccess('Updated Successfully');
     }
 
     public function destroy(OfficeHour $officeHour)
     {
         $officeHour->delete();
+
         return to_route('officeHour.index')->withSuccess('Deleted Successfully');
     }
 }

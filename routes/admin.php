@@ -10,10 +10,10 @@ use App\Http\Controllers\admin\HeaderController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\LocationController;
 use App\Http\Controllers\admin\OfficeHourController;
-use App\Http\Controllers\admin\TeachingController;
 use App\Http\Controllers\admin\SectionController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\SocialLinkController;
+use App\Http\Controllers\admin\TeachingController;
 use Illuminate\Support\Facades\Route;
 
 /*

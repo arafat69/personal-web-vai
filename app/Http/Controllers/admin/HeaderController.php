@@ -10,15 +10,18 @@ use Illuminate\Http\Request;
 class HeaderController extends Controller
 {
     private $path = 'header/';
+
     public function index()
     {
         $header = Header::first();
+
         return view('header.index', compact('header'));
     }
 
     public function edit()
     {
         $header = Header::first();
+
         return view('header.edit', compact('header'));
     }
 
@@ -27,7 +30,7 @@ class HeaderController extends Controller
         $request->validate([
             'photo' => 'required|file|mimes:png,jpg,webp,svg,jpeg,gif',
             'title' => 'required',
-            'description' => 'required|string'
+            'description' => 'required|string',
         ]);
 
         $thumbnail = $this->createOrUpdateMedia($header, $request);
@@ -43,6 +46,7 @@ class HeaderController extends Controller
 
         return to_route('header.index')->withSuccess('Updated Successfully');
     }
+
     private function createOrUpdateMedia($header, $request)
     {
         $media = $header->media;
@@ -64,6 +68,7 @@ class HeaderController extends Controller
                 $media
             );
         }
+
         return $media;
     }
 }

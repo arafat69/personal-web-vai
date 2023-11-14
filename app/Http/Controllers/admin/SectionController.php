@@ -10,10 +10,12 @@ use Illuminate\Http\Request;
 class SectionController extends Controller
 {
     private $path = 'thumbnail/';
+
     public function index()
     {
         $thumbnail = Section::first();
         $sections = Section::skip(1)->take(14)->get();
+
         return view('section.index', compact('sections', 'thumbnail'));
     }
 
@@ -26,26 +28,27 @@ class SectionController extends Controller
     {
         $data = $request->validate(['title' => 'nullable|string', 'description' => 'required']);
         Section::create($data);
+
         return to_route('section.index')->withSuccess('Create Successfully');
     }
-
 
     public function edit(Section $section)
     {
         return view('section.edit', compact('section'));
     }
 
-
     public function update(Request $request, Section $section)
     {
         $data = $request->validate(['title' => 'nullable|string', 'description' => 'required']);
         $section->update($data);
+
         return to_route('section.index')->withSuccess('Updated Successfully');
     }
 
     public function destroy(Section $section)
     {
         $section->delete();
+
         return to_route('section.index')->withSuccess('Deleted Successfully');
     }
 
@@ -61,6 +64,7 @@ class SectionController extends Controller
             ['id' => $section->id ?? 0],
             ['media_id' => $thumbnail?->id]
         );
+
         return to_route('section.index')->withSuccess('Updated Successfully');
     }
 
@@ -84,6 +88,7 @@ class SectionController extends Controller
                 $media
             );
         }
+
         return $media;
     }
 }

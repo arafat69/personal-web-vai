@@ -11,12 +11,14 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::first();
+
         return view('about.index', compact('about'));
     }
 
     public function edit()
     {
         $about = About::first();
+
         return view('about.edit', compact('about'));
     }
 

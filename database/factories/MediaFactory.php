@@ -19,7 +19,7 @@ class MediaFactory extends Factory
         return [
             'src' => 'images/dummy-image.jpg',
             'path' => 'images/',
-            'type' => 'image'
+            'type' => 'image',
         ];
     }
 }

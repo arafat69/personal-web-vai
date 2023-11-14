@@ -11,15 +11,16 @@ class HomeController extends Controller
     public function index()
     {
         $home = Home::first();
+
         return view('home.index', compact('home'));
     }
 
     public function edit()
     {
         $home = Home::first();
+
         return view('home.edit', compact('home'));
     }
-
 
     public function update(Request $request, Home $home)
     {
@@ -33,6 +34,6 @@ class HomeController extends Controller
             ]
         );
 
-       return to_route('home.index')->withSuccess('Updated Successfully');
+        return to_route('home.index')->withSuccess('Updated Successfully');
     }
 }

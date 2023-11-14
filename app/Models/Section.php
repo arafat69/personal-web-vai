@@ -27,6 +27,7 @@ class Section extends Model
         if ($this->media && Storage::exists($this->media->src)) {
             $image = Storage::url($this->media->src);
         }
+
         return new Attribute(
             get: fn () => $image
         );

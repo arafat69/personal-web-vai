@@ -10,13 +10,15 @@ class TeachingController extends Controller
 {
     public function index()
     {
-         $teaching = Teaching::first();
+        $teaching = Teaching::first();
+
         return view('teaching.index', compact('teaching'));
     }
 
     public function edit()
     {
         $teaching = Teaching::first();
+
         return view('teaching.edit', compact('teaching'));
     }
 

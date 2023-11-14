@@ -10,13 +10,15 @@ class CourseController extends Controller
 {
     public function index()
     {
-         $course = Course::first();
+        $course = Course::first();
+
         return view('course.index', compact('course'));
     }
 
     public function edit()
     {
         $course = Course::first();
+
         return view('course.edit', compact('course'));
     }
 

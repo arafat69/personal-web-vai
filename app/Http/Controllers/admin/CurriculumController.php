@@ -10,13 +10,15 @@ class CurriculumController extends Controller
 {
     public function index()
     {
-         $curriculum = Curriculum::first();
+        $curriculum = Curriculum::first();
+
         return view('curriculum.index', compact('curriculum'));
     }
 
     public function edit()
     {
         $curriculum = Curriculum::first();
+
         return view('curriculum.edit', compact('curriculum'));
     }
 

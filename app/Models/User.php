@@ -25,7 +25,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
     //==========================================> Relations
     public function media()
     {

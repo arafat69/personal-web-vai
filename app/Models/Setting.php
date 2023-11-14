@@ -32,6 +32,7 @@ class Setting extends Model
         if ($this->logo && Storage::exists($this->logo->src)) {
             $image = Storage::url($this->logo->src);
         }
+
         return new Attribute(
             get: fn () => $image
         );
@@ -43,6 +44,7 @@ class Setting extends Model
         if ($this->favicon && Storage::exists($this->favicon->src)) {
             $image = Storage::url($this->favicon->src);
         }
+
         return new Attribute(
             get: fn () => $image
         );

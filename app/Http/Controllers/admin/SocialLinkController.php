@@ -10,9 +10,11 @@ use Illuminate\Http\Request;
 class SocialLinkController extends Controller
 {
     private $path = 'social/';
+
     public function index()
     {
         $socials = Social::all();
+
         return view('social.index', compact('socials'));
     }
 
@@ -31,7 +33,7 @@ class SocialLinkController extends Controller
         $request->validate([
             'name' => 'required',
             'url' => 'nullable|string',
-            'icon' => 'required|file|mimes:png,jpg,jpeg,svg,webp,gif'
+            'icon' => 'required|file|mimes:png,jpg,jpeg,svg,webp,gif',
         ]);
 
         $thumbnail = $this->createMedia($request);
@@ -39,8 +41,9 @@ class SocialLinkController extends Controller
         Social::create([
             'name' => $request->name,
             'url' => $request->url,
-            'media_id' => $thumbnail->id
+            'media_id' => $thumbnail->id,
         ]);
+
         return to_route('social.index')->withSuccess('Created Successfully');
     }
 
@@ -49,22 +52,24 @@ class SocialLinkController extends Controller
         $request->validate([
             'name' => 'required',
             'url' => 'nullable|string',
-            'icon' => 'nullable|file|mimes:png,jpg,jpeg,svg,webp,gif'
+            'icon' => 'nullable|file|mimes:png,jpg,jpeg,svg,webp,gif',
         ]);
 
-        $thumbnail = $this->updateMedia($social,$request);
+        $thumbnail = $this->updateMedia($social, $request);
 
         $social->update([
             'name' => $request->name,
             'url' => $request->url,
-            'media_id' => $thumbnail->id
+            'media_id' => $thumbnail->id,
         ]);
+
         return to_route('social.index')->withSuccess('Updated Successfully');
     }
 
     public function destroy(social $social)
     {
         $social->delete();
+
         return to_route('social.index')->withSuccess('Deleted Successfully');
     }
 
@@ -79,6 +84,7 @@ class SocialLinkController extends Controller
                 'image'
             );
         }
+
         return $media;
     }
 
@@ -93,6 +99,7 @@ class SocialLinkController extends Controller
                 $media
             );
         }
+
         return $media;
     }
 }

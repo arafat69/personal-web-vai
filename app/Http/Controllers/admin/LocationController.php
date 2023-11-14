@@ -11,6 +11,7 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::all();
+
         return view('location.index', compact('locations'));
     }
 
@@ -28,6 +29,7 @@ class LocationController extends Controller
     {
         $data = $request->validate(['name' => 'required']);
         Location::create($data);
+
         return to_route('location.index')->withSuccess('Updated Successfully');
     }
 
@@ -35,12 +37,14 @@ class LocationController extends Controller
     {
         $data = $request->validate(['name' => 'required']);
         $location->update($data);
+
         return to_route('location.index')->withSuccess('Updated Successfully');
     }
 
     public function destroy(Location $location)
     {
         $location->delete();
+
         return to_route('location.index')->withSuccess('Deleted Successfully');
     }
 }
