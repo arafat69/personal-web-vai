@@ -17,7 +17,7 @@
         </div>
         <div class="card rounded-0 border-0 mt-2">
             <div class="card-body">
-                {!! $education->description !!}
+                {!! $education?->description !!}
             </div>
         </div>
     </div>
