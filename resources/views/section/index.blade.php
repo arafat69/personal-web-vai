@@ -6,7 +6,7 @@
             <a href="{{ route('section.profile', $thumbnail?->id) }}" class="btn btn-outline-primary">Update</a>
         </div>
         <div class="card-body">
-            <img src="{{ $thumbnail->thumbnail }}" alt="" width="100" height="100">
+            <img src="{{ $thumbnail?->thumbnail }}" alt="" width="100" height="100">
         </div>
     </div>
 

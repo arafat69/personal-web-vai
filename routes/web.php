@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\web\HomeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/teaching-philosophy', 'teaching')->name('teaching');
     Route::get('/curriculum-vitae', 'curriculum')->name('curriculum');
     Route::get('/courses', 'course')->name('course');
+});
+
+Route::get('/storage-link', function(){
+    Artisan::call('storage:link');
 });
