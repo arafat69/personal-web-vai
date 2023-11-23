@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserRepository extends Repository
 {
@@ -11,17 +12,23 @@ class UserRepository extends Repository
      *
      * @method model()
      */
-    public $path = 'images/users/';
-
     public static function model()
     {
         return User::class;
     }
 
-    public static function findByEmail($email): ?User
+    public static function storeByRequest(Request $request): User
     {
-        $user = self::query()->where('email', $email)->first();
+        return self::create([
+            //
+        ]);
+    }
 
+    public static function updateByRequest(Request $request, User $user): User
+    {
+        $user->update([
+            //
+        ]);
         return $user;
     }
 }

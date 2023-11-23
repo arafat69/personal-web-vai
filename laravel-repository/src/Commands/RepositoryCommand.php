@@ -29,15 +29,25 @@ class RepositoryCommand extends Command
 
         if ($modelName) {
             $modelVariable = Str::camel($modelName);
-            $stub = file_get_contents(base_path('stubs/repository.model.stub'));
+            $stub = file_get_contents(__DIR__.'/../../stubs/repository.model.stub');
+            if (file_exists(base_path('stubs/repository.model.stub'))) {
+                $stub = file_get_contents(base_path('stubs/repository.model.stub'));
+            }
+
             $stub = str_replace(['{{ ClassName }}', '{{ modelName }}', '{{ modelVariable }}'], [$className, $modelName, $modelVariable], $stub);
         } else {
-            $stub = file_get_contents(base_path('stubs/repository.stub'));
+            $path = __DIR__.'/../../stubs/repository.stub';
+            $stub = file_get_contents($path);
+            if (file_exists(base_path('stubs/repository.stub'))) {
+                $stub = file_get_contents(base_path('stubs/repository.stub'));
+            }
             $stub = str_replace('{{ ClassName }}', $className, $stub);
         }
 
         file_put_contents($repositoryPath, $stub);
 
-        $this->info("Repository created successfully: {$repositoryPath}");
+        $returnPath = "app/Repositories/{$className}.php";
+
+        $this->info("Repository [{$returnPath}] created successfully");
     }
 }
